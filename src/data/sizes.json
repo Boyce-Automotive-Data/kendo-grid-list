@@ -1,0 +1,50 @@
+[
+  {
+    "sizeId": 1,
+    "name": "S",
+    "order": 1,
+    "status": "Active"
+  },
+  {
+    "sizeId": 2,
+    "name": "M",
+    "order": 2,
+    "status": "Active"
+  },
+  {
+    "sizeId": 3,
+    "name": "L",
+    "order": 3,
+    "status": "Active"
+  },
+  {
+    "sizeId": 4,
+    "name": "XL",
+    "order": 4,
+    "status": "Active"
+  },
+  {
+    "sizeId": 6,
+    "name": "XXL",
+    "order": 6,
+    "status": "Active"
+  },
+  {
+    "sizeId": 7,
+    "name": "XS",
+    "order": 7,
+    "status": "Active"
+  },
+  {
+    "sizeId": 8,
+    "name": "XXXL",
+    "order": 7,
+    "status": "Active"
+  },
+  {
+    "sizeId": 9,
+    "name": "XXXXL",
+    "order": 8,
+    "status": "Active"
+  }
+]

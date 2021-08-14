@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-list-alt"></i>
+        Gift Sizes
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <kendo-grid
+              [kendoGridBinding]="giftSizes"
+              [pageSize]="10"
+              [pageable]="true"
+              [sortable]="true"
+              filterable="menu"
+              [groupable]="false"
+              (add)="addHandler($event)"
+              (remove)="removeHandler($event)"
+              (edit)="editHandler($event)"
+              (cancel)="cancelHandler($event)"
+              (save)="saveHandler($event)"
+            >
+              <ng-template kendoGridToolbarTemplate>
+                <button kendoGridAddCommand>Add new</button>
+              </ng-template>
+              <kendo-grid-column field="sizeId" title="Size">
+                <ng-template kendoGridCellTemplate let-dataItem>
+                  {{ size(dataItem.sizeId)?.name }}
+                </ng-template>
+                <ng-template
+                  kendoGridEditTemplate
+                  let-dataItem="dataItem"
+                  let-formGroup="form"
+                >
+                  <kendo-dropdownlist
+                    [data]="sizes"
+                    textField="name"
+                    valueField="id"
+                    [valuePrimitive]="true"
+                    [formControl]="$any(form).get('sizeId')"
+                  >
+                  </kendo-dropdownlist>
+                </ng-template>
+              </kendo-grid-column>
+              <kendo-grid-column field="maxLimit" editor="numeric" title="Max Limit">
+              </kendo-grid-column>
+              <kendo-grid-column field="stock" editor="numeric" title="Stock">
+              </kendo-grid-column>
+              <kendo-grid-column field="status" title="Status">
+              </kendo-grid-column>
+              <kendo-grid-command-column>
+                <ng-template kendoGridCellTemplate let-isNew="isNew">
+                  <button kendoGridEditCommand [primary]="true">Edit</button>
+                  <button kendoGridRemoveCommand>Delete</button>
+                  <button kendoGridSaveCommand>
+                    {{ isNew ? 'Add' : 'Update' }}
+                  </button>
+                  <button kendoGridCancelCommand>
+                    {{ isNew ? 'Discard changes' : 'Cancel' }}
+                  </button>
+                </ng-template>
+              </kendo-grid-command-column>
+            </kendo-grid>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

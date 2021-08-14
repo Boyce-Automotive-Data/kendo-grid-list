@@ -1,0 +1,80 @@
+{
+  "id": 576,
+  "categoryId": 37,
+  "name": "Blue Motorsport T shirt",
+  "code": "2020",
+  "description": "High quality blue t-shirt from our Motorsport range.",
+  "imageUri": "",
+  "stock": 104,
+  "points": 2060,
+  "status": "Active",
+  "offers": null,
+  "sizes": [
+    {
+      "giftId": 0,
+      "sizeId": 1,
+      "maxLimit": 10,
+      "stock": 80,
+      "status": "Active",
+      "size": {
+        "id": 1,
+        "name": "S",
+        "order": 1,
+        "status": "Active"
+      }
+    },
+    {
+      "giftId": 0,
+      "sizeId": 2,
+      "maxLimit": 10,
+      "stock": 217,
+      "status": "Active",
+      "size": {
+        "id": 2,
+        "name": "M",
+        "order": 2,
+        "status": "Active"
+      }
+    },
+    {
+      "giftId": 0,
+      "sizeId": 3,
+      "maxLimit": 10,
+      "stock": 282,
+      "status": "Active",
+      "size": {
+        "id": 3,
+        "name": "L",
+        "order": 3,
+        "status": "Active"
+      }
+    },
+    {
+      "giftId": 0,
+      "sizeId": 4,
+      "maxLimit": 10,
+      "stock": 174,
+      "status": "Active",
+      "size": {
+        "id": 4,
+        "name": "XL",
+        "order": 4,
+        "status": "Active"
+      }
+    },
+    {
+      "giftId": 0,
+      "sizeId": 6,
+      "maxLimit": 10,
+      "stock": 64,
+      "status": "Active",
+      "size": {
+        "id": 6,
+        "name": "XXL",
+        "order": 6,
+        "status": "Active"
+      }
+    }
+  ],
+  "category": null
+}
