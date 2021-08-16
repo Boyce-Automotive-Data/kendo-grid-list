@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 import {SizesService} from "../sizes.service";
@@ -20,13 +20,16 @@ const createFormGroup = (dataItem: GiftSizeModel) =>
 })
 export class GiftSizesComponent implements OnInit {
   @Input() public giftSizes!: GiftSizeModel[];
+  @Output() public onChange: EventEmitter<boolean>;
 
   sizes!: SizeModel[];
 
   private editedRowIndex: number | undefined;
   public form: FormGroup | undefined;
 
-  constructor(private readonly service: SizesService) { }
+  constructor(private readonly service: SizesService) {
+    this.onChange = new EventEmitter<boolean>();
+  }
 
   async ngOnInit(): Promise<void> {
     this.sizes = await this.service
@@ -74,7 +77,30 @@ export class GiftSizesComponent implements OnInit {
     console.log(isNew);
     console.debug(giftSize);
 
+    if (isNew) {
+      this.giftSizes.push(({
+        giftId: 0,
+        sizeId: giftSize.sizeId,
+        maxLimit: giftSize.maxLimit,
+        stock: giftSize.stock,
+        status: giftSize.status,
+      } as unknown) as GiftSizeModel);
+    }
+    else {
+      this.giftSizes[rowIndex] = ({
+        giftId: 0,
+        sizeId: giftSize.sizeId,
+        maxLimit: giftSize.maxLimit,
+        stock: giftSize.stock,
+        status: giftSize.status,
+      } as unknown) as GiftSizeModel;
+    }
+
+    console.log(this.giftSizes);
+
     sender.closeRow(rowIndex);
+
+    this.onChange.emit(true);
   }
 
   public removeHandler({ dataItem }: any): void {
@@ -86,6 +112,4 @@ export class GiftSizesComponent implements OnInit {
     this.editedRowIndex = undefined;
     this.form = undefined;
   }
-
-
 }

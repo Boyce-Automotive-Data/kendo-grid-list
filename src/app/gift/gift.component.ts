@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 import {GiftService} from "./gift.service";
 import {GiftModel, GiftSizeModel} from "./gift.model";
+import {GiftSizesComponent} from "./gift-sizes/gift-sizes.component";
 
 @Component({
   selector: 'app-gift',
@@ -13,6 +14,8 @@ export class GiftComponent implements OnInit {
 
   giftSizes!: GiftSizeModel[];
 
+  @ViewChild("giftsizes", {static: false}) giftSizesComponent!: GiftSizesComponent;
+
   constructor(private readonly giftService: GiftService) { }
 
   async ngOnInit(): Promise<void> {
@@ -21,5 +24,10 @@ export class GiftComponent implements OnInit {
     if (this.gift$?.sizes) {
       this.giftSizes = this.gift$.sizes;
     }
+  }
+
+  updateSizes(response: boolean): void {
+    this.giftSizes = this.giftSizesComponent.giftSizes;
+    console.log(this.giftSizes);
   }
 }
