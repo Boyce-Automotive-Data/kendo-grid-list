@@ -20,16 +20,23 @@ const createFormGroup = (dataItem: GiftSizeModel) =>
 })
 export class GiftSizesComponent implements OnInit {
   @Input() public giftSizes!: GiftSizeModel[];
-  @Output() public onChange: EventEmitter<boolean>;
+  readonly distinctStatusList$: any[] = [
+    {
+      displayStatus: 'Active',
+      status: 'Active',
+    },
+    {
+      displayStatus: 'Deactive',
+      status: 'Deactive',
+    },
+  ];
 
   sizes!: SizeModel[];
 
   private editedRowIndex: number | undefined;
   public form: FormGroup | undefined;
 
-  constructor(private readonly service: SizesService) {
-    this.onChange = new EventEmitter<boolean>();
-  }
+  constructor(private readonly service: SizesService) {}
 
   async ngOnInit(): Promise<void> {
     this.sizes = await this.service
@@ -96,15 +103,14 @@ export class GiftSizesComponent implements OnInit {
       } as unknown) as GiftSizeModel;
     }
 
+    this.giftSizes = [...this.giftSizes];
     console.log(this.giftSizes);
 
     sender.closeRow(rowIndex);
-
-    this.onChange.emit(true);
   }
 
   public removeHandler({ dataItem }: any): void {
-    console.log(dataItem);
+    this.giftSizes = this.giftSizes.filter(gs => gs.sizeId != dataItem.sizeId);
   }
 
   private closeEditor(grid: any, rowIndex = this.editedRowIndex) {

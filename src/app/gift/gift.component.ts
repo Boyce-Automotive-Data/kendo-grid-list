@@ -26,7 +26,7 @@ export class GiftComponent implements OnInit {
     }
   }
 
-  updateSizes(response: boolean): void {
+  async onSubmit(): Promise<void> {
     this.giftSizes = this.giftSizesComponent.giftSizes;
     console.log(this.giftSizes);
   }

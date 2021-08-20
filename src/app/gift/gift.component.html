@@ -1,3 +1,11 @@
 <p>gift works!</p>
 
-<app-gift-sizes #giftsizes [giftSizes]="giftSizes" (onChange)="updateSizes($event)"></app-gift-sizes>
+<app-gift-sizes #giftsizes [giftSizes]="giftSizes"></app-gift-sizes>
+
+<button
+  type="submit"
+  class="btn btn-primary mr-1"
+  (click)="onSubmit()"
+>
+  <i class="fa fa-dot-circle-o"></i> Submit
+</button>

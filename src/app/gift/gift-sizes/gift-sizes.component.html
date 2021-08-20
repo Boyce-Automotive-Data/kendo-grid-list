@@ -48,6 +48,20 @@
               <kendo-grid-column field="stock" editor="numeric" title="Stock">
               </kendo-grid-column>
               <kendo-grid-column field="status" title="Status">
+                <ng-template
+                  kendoGridEditTemplate
+                  let-dataItem="dataItem"
+                  let-formGroup="form"
+                >
+                  <kendo-dropdownlist
+                    [data]="distinctStatusList$"
+                    textField="displayStatus"
+                    valueField="status"
+                    [valuePrimitive]="true"
+                    [formControl]="$any(form).get('status')"
+                  >
+                  </kendo-dropdownlist>
+                </ng-template>
               </kendo-grid-column>
               <kendo-grid-command-column>
                 <ng-template kendoGridCellTemplate let-isNew="isNew">
